@@ -1,0 +1,35 @@
+@startuml class_diagram
+
+' Define namespace for your project
+namespace project {
+  
+  ' Define classes
+  class File {
+    - filename: string
+    - filepath: string
+    + create(): void
+    + read(): void
+    + write(data: string): void
+    + delete(): void
+  }
+  
+  class Directory {
+    - dirname: string
+    - dirpath: string
+    + create(): void
+    + listContents(): void
+    + delete(): void
+  }
+  
+  ' Define exceptions
+  class FileException {
+    - message: string
+    + getMessage(): string
+  }
+  
+  ' Define relationships
+  File "1" --* "1" Directory
+  File --|> FileException
+}
+
+@enduml

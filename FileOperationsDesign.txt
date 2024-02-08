@@ -1,0 +1,87 @@
+### System Level Design:
+
+#### 1. Modules:
+   - **File System Module:** Responsible for interacting with the underlying file system and providing file-related operations.
+   - **Error Handling Module:** Handles errors and exceptions generated during file operations.
+
+#### 2. Classes:
+
+##### a. File System Module:
+   - **File**:
+     - Represents a file in the file system.
+     - Attributes:
+       - `filename`: Name of the file.
+       - `filepath`: Full path to the file.
+     - Methods:
+       - `create()`: Creates a new file.
+       - `read()`: Reads data from the file.
+       - `write(data)`: Writes data to the file.
+       - `delete()`: Deletes the file.
+   
+   - **Directory**:
+     - Represents a directory in the file system.
+     - Attributes:
+       - `dirname`: Name of the directory.
+       - `dirpath`: Full path to the directory.
+     - Methods:
+       - `create()`: Creates a new directory.
+       - `listContents()`: Lists the contents of the directory.
+       - `delete()`: Deletes the directory.
+
+##### b. Error Handling Module:
+   - **FileException**:
+     - Represents exceptions related to file operations.
+     - Attributes:
+       - `message`: Error message.
+     - Methods:
+       - `getMessage()`: Retrieves the error message.
+
+#### 3. Interfaces:
+   - Define interfaces for file operations to allow for different implementations (e.g., using standard library, platform-specific APIs).
+
+#### 4. Dependency Inversion:
+   - Use dependency inversion to decouple higher-level modules (e.g., application logic) from lower-level modules (e.g., file system operations).
+
+#### 5. Clean Architecture:
+   - Separate business logic from infrastructure details.
+   - Keep high-level policies and low-level details separate.
+   - Ensure that each module has clear responsibilities and boundaries.
+
+### Class Diagram:
+
+```
+                       +-------------------+
+                       |     File System   |
+                       +-------------------+
+                                 |
+                       +-------------------+
+                       |       File        |
+                       +-------------------+
+                       | - filename        |
+                       | - filepath        |
+                       +-------------------+
+                       | + create()        |
+                       | + read()          |
+                       | + write(data)     |
+                       | + delete()        |
+                       +-------------------+
+                                |
+                                |
+                       +-------------------+
+                       |     Directory     |
+                       +-------------------+
+                       | - dirname         |
+                       | - dirpath         |
+                       +-------------------+
+                       | + create()        |
+                       | + listContents()  |
+                       | + delete()        |
+                       +-------------------+
+```
+
+### Notes:
+- Each class follows the Single Responsibility Principle (SRP) by encapsulating a single functionality.
+- The Dependency Inversion Principle (DIP) is achieved by defining interfaces for file operations and allowing different implementations.
+- Error handling is centralized in the Error Handling Module to ensure consistency across the application.
+
+This system level design provides a solid foundation for implementing basic file operations in C++ while adhering to object-oriented principles and clean architecture.
