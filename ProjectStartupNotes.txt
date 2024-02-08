@@ -1,0 +1,20 @@
+Project:  To learn C++ by creating a File Management System.
+
+File Operations:
+	Creating
+	Reading
+	Writing
+	Deleting
+
+Directory Operations:
+	Creating
+	Listing Directory Contents
+	Navigating Directories
+
+Error Handling:
+	File Not Found
+	Permission Denied
+	Disk Full
+
+Testing:
+	Unit Tests (Google Test framework)
