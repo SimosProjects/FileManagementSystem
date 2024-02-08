@@ -1,0 +1,11 @@
+@startuml manage_files_sequence_diagram
+actor Administrator
+
+participant Controller
+participant "File System" as FileSystem
+
+Administrator -> Controller: Request to manage files
+Controller -> FileSystem: Access file system
+FileSystem --> Controller: File data
+Controller -> Administrator: Display file management interface
+@enduml

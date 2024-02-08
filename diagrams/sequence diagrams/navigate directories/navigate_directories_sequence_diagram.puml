@@ -1,0 +1,11 @@
+@startuml navigate_directories_sequence_diagram
+actor User
+
+participant Controller
+participant "File System" as FileSystem
+
+User -> Controller: Request to navigate directories
+Controller -> FileSystem: Retrieve directory structure
+FileSystem --> Controller: Directory structure
+Controller -> User: Display directory structure
+@enduml

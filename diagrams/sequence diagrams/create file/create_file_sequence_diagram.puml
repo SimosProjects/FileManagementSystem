@@ -1,0 +1,11 @@
+@startuml create_file_sequence_diagram
+actor User
+
+participant Controller
+participant "File System" as FileSystem
+
+User -> Controller: Request to create file
+Controller -> FileSystem: Create file
+FileSystem --> Controller: File created
+Controller -> User: Confirmation message
+@enduml

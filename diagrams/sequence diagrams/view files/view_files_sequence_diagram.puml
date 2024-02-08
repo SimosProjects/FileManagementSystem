@@ -1,0 +1,14 @@
+@startuml view_files_sequence_diagram
+actor User
+
+participant Controller
+participant "File System" as FileSystem
+
+User -> Controller: Request to view files
+Controller -> FileSystem: Retrieve file list
+FileSystem --> Controller: File list
+User -> Controller: Request to view specific file
+Controller -> FileSystem: Retrieve specific file
+FileSystem --> Controller: Specific file
+Controller -> User: Display file
+@enduml

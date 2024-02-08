@@ -1,0 +1,11 @@
+@startuml update_file_sequence_diagram
+actor User
+
+participant Controller
+participant "File System" as FileSystem
+
+User -> Controller: Request to update file
+Controller -> FileSystem: Update file
+FileSystem --> Controller: File updated
+Controller -> User: Confirmation message
+@enduml

@@ -1,0 +1,11 @@
+@startuml read_file_sequence_diagram
+actor User
+
+participant Controller
+participant "File System" as FileSystem
+
+User -> Controller: Request to read file
+Controller -> FileSystem: Read file
+FileSystem --> Controller: File content
+Controller -> User: Display file content
+@enduml

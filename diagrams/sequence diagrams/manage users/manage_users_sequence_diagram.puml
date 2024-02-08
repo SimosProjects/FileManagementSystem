@@ -1,0 +1,11 @@
+@startuml manage_users_sequence_diagram
+actor Administrator
+
+participant Controller
+participant "User Database" as UserDB
+
+Administrator -> Controller: Request to manage users
+Controller -> UserDB: Access user database
+UserDB --> Controller: User data
+Controller -> Administrator: Display user management interface
+@enduml

@@ -1,0 +1,11 @@
+@startuml delete_file_sequence_diagram
+actor User
+
+participant Controller
+participant "File System" as FileSystem
+
+User -> Controller: Request to delete file
+Controller -> FileSystem: Delete file
+FileSystem --> Controller: File deleted
+Controller -> User: Confirmation message
+@enduml
