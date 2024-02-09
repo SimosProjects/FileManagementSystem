@@ -1,35 +1,56 @@
 @startuml class_diagram
-
-' Define namespace for your project
-namespace project {
-  
-  ' Define classes
-  class File {
-    - filename: string
-    - filepath: string
-    + create(): void
-    + read(): void
-    + write(data: string): void
-    + delete(): void
-  }
-  
-  class Directory {
-    - dirname: string
-    - dirpath: string
-    + create(): void
-    + listContents(): void
-    + delete(): void
-  }
-  
-  ' Define exceptions
-  class FileException {
-    - message: string
-    + getMessage(): string
-  }
-  
-  ' Define relationships
-  File "1" --* "1" Directory
-  File --|> FileException
+class User {
+    - username: string
+    - password: string
+    + login(username: string, password: string): bool
+    + logout(): void
 }
 
+class File {
+    - name: string
+    - size: int
+    - content: string
+    + read(): string
+    + write(content: string): void
+}
+
+class Directory {
+    - name: string
+    - files: File[]
+    - subdirectories: Directory[]
+    + addFile(file: File): void
+    + removeFile(file: File): void
+    + addSubdirectory(directory: Directory): void
+    + removeSubdirectory(directory: Directory): void
+}
+
+class Controller {
+    - fileSystem: FileSystem
+    - userDatabase: UserDatabase
+    + login(username: string, password: string): bool
+    + logout(): void
+    + createFile(name: string): File
+    + deleteFile(file: File): void
+    + navigateToDirectory(directory: Directory): void
+    + viewFiles(directory: Directory): File[]
+}
+
+class FileSystem {
+    + createFile(name: string): File
+    + deleteFile(file: File): void
+    + readFile(file: File): string
+    + writeFile(file: File, content: string): void
+}
+
+class UserDatabase {
+    + addUser(username: string, password: string): void
+    + removeUser(username: string): void
+}
+
+User -- Controller
+File -- Directory
+Directory -- Controller
+Controller -- FileSystem
+Controller -- UserDatabase
 @enduml
+

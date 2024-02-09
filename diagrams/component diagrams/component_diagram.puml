@@ -1,0 +1,14 @@
+@startuml component_diagram
+package "File Management System" {
+    [User Interface] --> [Controller]
+    [Controller] --> [File System]
+    [Controller] --> [User Database]
+    [Controller] --> [Logger]
+    [Controller] --> [Authentication Module]
+    [Controller] --> [File Metadata Database]
+    [Controller] --> [Access Control Module]
+    [Controller] --> [File Encryption Module]
+    [Controller] --> [Backup Module]
+    [Controller] --> [Notification System]
+}
+@enduml
