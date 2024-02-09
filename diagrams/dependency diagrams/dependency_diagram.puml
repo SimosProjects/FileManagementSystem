@@ -1,0 +1,7 @@
+@startuml dependency_diagram
+package "File Management System" {
+    [Controller] --> [File System]
+    [Controller] --> [User Database]
+    [Controller] --> [Logger]
+}
+@enduml

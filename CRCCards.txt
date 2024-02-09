@@ -1,0 +1,49 @@
+CRC Cards:
+
+Controller Class:
+
+    Responsibilities:
+
+        Handle user requests and interactions.
+        Coordinate actions between different system components.
+        Manage the flow of control within the system.
+
+    Collaborators:
+
+        File System: Interacts with the file system to perform file-related operations.
+        User Database: Interacts with the user database to manage user accounts and permissions.
+        Logger: Logs important events and errors during system operation.
+
+File System Class:
+
+    Responsibilities:
+
+        Perform file-related operations such as creating, reading, updating, and deleting files.
+        Manage file metadata and attributes.
+        Ensure data integrity and security of files.
+
+    Collaborators:
+
+        Controller: Receives requests from the controller to perform file operations.
+
+User Database Class:
+
+    Responsibilities:
+
+        Manage user accounts, including user authentication and authorization.
+        Store user-related information such as usernames, passwords, and permissions.
+
+    Collaborators:
+
+        Controller: Receives requests from the controller to manage user accounts and permissions.
+
+Logger Class:
+
+    Responsibilities:
+
+        Log important events and errors during system operation for auditing and debugging purposes.
+        Provide logging functionality to other system components.
+
+    Collaborators:
+
+        Controller: Receives logging requests from the controller to log events and errors.
