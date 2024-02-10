@@ -26,5 +26,24 @@ void Directory::removeFile(const std::string& fileName) {
 }
 
 //Adds a subdirectory to the subdirectories list of the directory
+void Directory::addSubdirectory(const Directory& directory) {
+    m_subdirectories.push_back(directory);
+}
 
 //Removes a subdirectory from the directory
+void Directory::removeSubdirectory(const std::string& subdirectoryName) {
+    //Find subdirectory
+    auto it = std::find_if(m_subdirectories.begin(), m_subdirectories.end(), [subdirectoryName](Directory& subdirectory){
+        return subdirectory.getName() == subdirectoryName;
+    });
+
+    //Remove subdirectory
+    if(it != m_subdirectories.end()) {
+        m_subdirectories.erase(it);
+    }
+}
+
+//Returns the name of a directory
+std::string Directory::getName() {
+    return m_name;
+}

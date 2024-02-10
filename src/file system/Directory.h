@@ -25,6 +25,9 @@ public:
     //Remove a subdirectory from directory
     void removeSubdirectory(const std::string& subdirectoryName);
 
+    //Gets the name of a directory
+    std::string getName();
+
 private:
     std::string m_name;//member variable for directory name
     std::vector<File> m_files;//member list of files in the directory
