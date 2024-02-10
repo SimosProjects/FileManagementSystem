@@ -1,0 +1,32 @@
+# Compiled object files
+*.o
+
+# Compiled executables
+*.exe
+*.out
+
+# Build directories
+build/
+bin/
+
+# Temporary files
+*~
+.*.swp
+
+# IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Logs and cache files
+*.log
+*.cache
+
+# Configuration files
+config.ini
+.env

@@ -20,3 +20,8 @@ void File::write(const std::string& str) {
 int File::getSize() {
     return m_content.size();
 }
+
+//Returns the file name
+std::string File::getName() {
+    return m_name;
+}

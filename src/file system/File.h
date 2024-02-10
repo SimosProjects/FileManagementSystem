@@ -11,6 +11,7 @@ public:
     //File operation methods
     std::string read();
     void write(const std::string& str);
+    std::string getName();
     int getSize();
 
 private:
