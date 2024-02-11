@@ -1,56 +1,61 @@
-@startuml class_diagram
-class User {
-    - username: string
-    - password: string
-    + login(username: string, password: string): bool
-    + logout(): void
-}
-
-class File {
-    - name: string
-    - size: int
-    - content: string
-    + read(): string
-    + write(content: string): void
-}
-
-class Directory {
-    - name: string
-    - files: File[]
-    - subdirectories: Directory[]
-    + addFile(file: File): void
-    + removeFile(file: File): void
-    + addSubdirectory(directory: Directory): void
-    + removeSubdirectory(directory: Directory): void
-}
-
-class Controller {
-    - fileSystem: FileSystem
-    - userDatabase: UserDatabase
-    + login(username: string, password: string): bool
-    + logout(): void
-    + createFile(name: string): File
-    + deleteFile(file: File): void
-    + navigateToDirectory(directory: Directory): void
-    + viewFiles(directory: Directory): File[]
-}
+@startuml
 
 class FileSystem {
+    + FileSystem()
+    + ~FileSystem()
     + createFile(name: string): File
     + deleteFile(file: File): void
     + readFile(file: File): string
     + writeFile(file: File, content: string): void
 }
 
+class Directory {
+    - name: string
+    - files: vector<File>
+    + Directory(name: string)
+    + ~Directory()
+    + addFile(file: File): void
+    + removeFile(file: File): void
+    + getName(): string
+    + getFiles(): vector<File>
+}
+
+class File {
+    - name: string
+    - content: string
+    + File(name: string)
+    + ~File()
+    + getName(): string
+    + getContent(): string
+    + setContent(content: string): void
+}
+
 class UserDatabase {
+    + UserDatabase()
+    + ~UserDatabase()
     + addUser(username: string, password: string): void
     + removeUser(username: string): void
 }
 
-User -- Controller
-File -- Directory
-Directory -- Controller
-Controller -- FileSystem
-Controller -- UserDatabase
-@enduml
+class Controller {
+    - fileSystem: FileSystem
+    - userDatabase: UserDatabase
+    + Controller()
+    + ~Controller()
+    + login(username: string, password: string): void
+    + logout(): void
+    + createDirectory(directoryName: string): void
+    + removeDirectory(directoryName: string): void
+    + viewFiles(): void
+    + createFile(fileName: string): void
+    + deleteFile(fileName: string): void
+    + readFile(fileName: string): void
+    + writeFile(fileName: string, content: string): void
+}
 
+FileSystem "1" --> "*" Directory
+Directory "1" --> "*" File
+Controller *-- FileSystem : uses
+Controller *-- UserDatabase : uses
+
+@enduml

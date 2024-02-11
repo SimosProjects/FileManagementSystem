@@ -8,10 +8,16 @@ public:
     //Constructor
     File(const std::string& name);
 
-    //File operation methods
+    //Read a file
     std::string read();
+
+    //Write to a file
     void write(const std::string& str);
+
+    //Gets the name of a file
     std::string getName();
+
+    //Gets the size of the data in a file
     int getSize();
 
 private:
