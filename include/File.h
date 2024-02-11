@@ -21,9 +21,9 @@ public:
     int getSize();
 
 private:
-    std::string m_name; //member variable to store the filename
-    std::string m_content;//member variable to store the file contents
-    int m_size; //member variable to store the file size
+    std::string name; //variable to store the filename
+    std::string content;//variable to store the file contents
+    int size; //variable to store the file size
 };
 
 #endif

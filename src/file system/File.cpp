@@ -2,26 +2,26 @@
 
 //Constructor definition
 File::File(const std::string& name) {
-    m_name = name;
-    m_content = "";
+    name = name;
+    content = "";
 }
 
 //Returns the file contents
 std::string File::read() {
-    return m_content;
+    return content;
 }
 
 //Writes the file contents
 void File::write(const std::string& str) {
-    m_content = str;
+    content = str;
 }
 
 //Returns the size of the file contents
 int File::getSize() {
-    return m_content.size();
+    return content.size();
 }
 
 //Returns the file name
 std::string File::getName() {
-    return m_name;
+    return name;
 }

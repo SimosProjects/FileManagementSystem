@@ -13,10 +13,16 @@ public:
     ~UserDatabase();
 
     //Adds a user and password to the database
-    void addUser(const std::string username, const std::string password);
+    void addUser(const std::string& username, const std::string& password);
 
     //Removes a user from the database
-    void removeUser(const std::string username);
+    void removeUser(const std::string& username);
+
+    //Checks if user exists in user database
+    bool userExists(const std::string& username);
+
+    //Authenticates the user on login
+    bool authenticateUser(const std::string& username, const std::string& password);
 
 private:
     //Defines a struct to store User info

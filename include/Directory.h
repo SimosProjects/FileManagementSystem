@@ -28,10 +28,13 @@ public:
     //Gets the name of a directory
     std::string getName();
 
+    //Gets the files within the directory
+    std::vector<File> getFiles();
+
 private:
-    std::string m_name;//member variable for directory name
-    std::vector<File> m_files;//member list of files in the directory
-    std::vector<Directory> m_subdirectories;//member list of subdirectories in the directory
+    std::string name;//variable for directory name
+    std::vector<File> files;//list of files in the directory
+    std::vector<Directory> subdirectories;//list of subdirectories in the directory
 };
 
 #endif

@@ -3,23 +3,24 @@
 #include <iostream>
 
 //Constructor
-FileSystem::FileSystem() {};
+FileSystem::FileSystem() : currentDirectory(systemName), directories() {
+    std::cout << "What would you like to name your system? ";
+    std::cin >> systemName;
+};
 
 //Deconstructor
 FileSystem::~FileSystem() {};
 
+//Adds a directory to the file system
+void FileSystem::addDirectory(const Directory& directory) {
+    directories.push_back(directory);
+    currentDirectory = directory;
+}
+
 //Creates a File
-File FileSystem::createFile(const std::string& filename) {
-    //create a file object with given filename
-    File newFile(filename);
-
-    //create a new file with the given filename
-    std::ofstream outputFile(filename);
-
-    //close the file stream
-    outputFile.close();
-
-    return newFile;
+void FileSystem::addFile(const File& file) {
+    //add the file to the current directory
+    currentDirectory.addFile(file);
 }
     
 //Deletes a File
@@ -28,27 +29,36 @@ void FileSystem::deleteFile(File& file) {
 }
 
 //Writes to a File
-void FileSystem::writeFile(File& file, const std::string content) {
-    //opens the file for writing
-    std::ofstream outputFile(file.getName());
-
-    //write to the file
-    outputFile << content;
-
-    //close file
-    outputFile.close();
+void FileSystem::writeFile(File& file, const std::string& content) {
+    for(auto& directory : directories) {
+        //get all the files in the directory
+        auto files = directory.getFiles();
+        //find the file
+        auto it = std::find(files.begin(), files.end(), file);
+        if(it != files.end()) {
+            //write the content to the file
+            it->write(content);
+            return;
+        }
+    }
 }
 
 //Reads from a File
 std::string FileSystem::readFile(File& file) {
-    //opens the file to read
-    std::ifstream inputFile(file.getName());
+    for(auto& directory : directories) {
+        //get all the files in the directory
+        auto files = directory.getFiles();
+        //find the file
+        auto it = std::find(files.begin(), files.end(), file);
+        if(it != files.end()) {
+            //write the content to the file
+            it->read();
+            return;
+        }
+    }
+}
 
-    //read the contents of the file by using an input iterator to interate over the input stream
-    std::string content((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>());
-
-    //close the file
-    inputFile.close();
-
-    return content;
+//Returns the current directory
+Directory& FileSystem::getCurrentDirectory() {
+    return currentDirectory;
 }

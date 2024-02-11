@@ -1,12 +1,14 @@
 @startuml
 
 class FileSystem {
+    - directories: vector<Directory>
     + FileSystem()
     + ~FileSystem()
     + createFile(name: string): File
     + deleteFile(file: File): void
     + readFile(file: File): string
     + writeFile(file: File, content: string): void
+    + createDirectory(name: string): Directory
 }
 
 class Directory {
